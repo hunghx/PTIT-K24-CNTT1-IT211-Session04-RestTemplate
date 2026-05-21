@@ -1,11 +1,11 @@
 package ra.restful.controller;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+import ra.restful.dto.request.TaskAdd;
 import ra.restful.exception.NotFoundException;
 import ra.restful.service.TaskService;
 
@@ -23,11 +23,20 @@ public class TaskController {
     }
     // Lấy chi tiết theo id
     @GetMapping("/{id}")
-    public ResponseEntity<?> findById(@PathVariable("id") String id){
-        try{
+    public ResponseEntity<?> findById(@PathVariable("id") String id) throws NotFoundException{
+//        try{
             return ResponseEntity.ok(taskService.findById(id)); // 200
-        }catch (NotFoundException ex){
-            return ResponseEntity.notFound().build(); // 404
-        }
+//        }catch (NotFoundException ex){
+//            return ResponseEntity.notFound().build(); // 404
+//        }
+    }
+
+    @PostMapping
+    public ResponseEntity<?> addTask(@Valid @RequestBody TaskAdd request){
+//        if(rs.hasErrors()){
+//            // trả về lỗi 400
+//        }
+        // trả về thành công
+        return ResponseEntity.ok("Thành công");
     }
 }

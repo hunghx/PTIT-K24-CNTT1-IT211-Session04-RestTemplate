@@ -13,10 +13,14 @@ import java.util.List;
 @RequiredArgsConstructor
 public class TaskService {
     private final TaskRepository taskRepository;
+
     public List<TaskResponse> findAll(){
+        System.out.println("Phương thức findAll được thưc thi");
         return taskRepository.findAllTasks();
     }
+
     public TaskDetailResponse findById(String id) throws NotFoundException{
+        System.out.println("Phương thức findById được thưc thi");
         return taskRepository.findByIdDetail(id)
                 .orElseThrow(() -> new NotFoundException("ID ko tồn tại"));
     }
