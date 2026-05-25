@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.SQLUpdate;
 
 import java.time.LocalDateTime;
 
@@ -27,7 +30,9 @@ public class Task {
     private String member;
     @Enumerated(EnumType.STRING)
     private TaskStatus status;
-
+    @ManyToOne
+    @JoinColumn(name="student_id",foreignKey = @ForeignKey(name = "abc"))
+    private Student student;
     private Boolean isDeleted;
 
 

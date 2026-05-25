@@ -21,4 +21,11 @@ public interface TaskRepository extends JpaRepository<Task, String> {
     @Query("select new  ra.restful.dto.response.TaskResponse(T)" +
             " from Task T WHERE T.isDeleted = false")
     List<TaskResponse> findAllTasks();
+
+    // phương thức truy vấn
+//    @Query("from Task where isDeleted = false ")
+//    List<Task> findAll();
+   // lấy danh sách công việc theo 1 sinh viên
+    @Query() // sau này làm dự án tất cả select đều dùng @query
+    List<Task> findByStudent_Id(Long id);
 }

@@ -14,9 +14,11 @@ import java.util.List;
 public class TaskService {
     private final TaskRepository taskRepository;
 
-    public List<TaskResponse> findAll(){
+    public List<TaskResponse> findAll() throws NotFoundException{
         System.out.println("Phương thức findAll được thưc thi");
-        return taskRepository.findAllTasks();
+
+        throw  new NotFoundException("Đây là lõi khi goi find ALL");
+//        return taskRepository.findAllTasks();
     }
 
     public TaskDetailResponse findById(String id) throws NotFoundException{

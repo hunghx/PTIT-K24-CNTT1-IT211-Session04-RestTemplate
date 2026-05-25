@@ -18,7 +18,7 @@ public class TaskController {
 
     // Lấy danh sách
     @GetMapping
-    public ResponseEntity<?> getAllTasks(){
+    public ResponseEntity<?> getAllTasks() throws NotFoundException{
         return ResponseEntity.ok(taskService.findAll()); // 200 thành công
     }
     // Lấy chi tiết theo id
